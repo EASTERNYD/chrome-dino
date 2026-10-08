@@ -1,4 +1,4 @@
-# 🦖 Chrome Dino Runner
+# Chrome Dino Runner
 
 仿 Chrome 离线小恐龙游戏（T-Rex Runner），原生 HTML5 / CSS3 / JavaScript 实现。
 
