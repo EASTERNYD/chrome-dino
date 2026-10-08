@@ -18,21 +18,9 @@
 
 ## 运行
 
-### 桌面端
+**桌面端**：VS Code Live Server 或 `npx serve .`。直接双击 `index.html` 也可运行。
 
-VS Code Live Server 或 `npx serve .`。直接双击 `index.html` 也可运行（Fetch 自动回退 `config.js`）。
-
-### 手机端 & 在线访问（GitHub Pages）
-
-1. Push 到 GitHub 仓库
-2. Settings → Pages → Source 选 `main` 分支，根目录 `/` → Save
-3. 访问 `https://<用户名>.github.io/<仓库名>/`
-
-> 免费 HTTPS，无需服务器，每次 push 自动更新。手机直接浏览器打开即玩。
-
-### 手机端（本地 WiFi 调试）
-
-电脑启动 Live Server → `ipconfig` 查 IPv4 → 手机浏览器访问 `http://<IP>:5500`
+**网页端**：[在线游玩](https://easternyd.github.io/chrome-dino/)
 
 ## 操作
 
