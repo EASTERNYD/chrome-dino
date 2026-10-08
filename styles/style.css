@@ -225,6 +225,27 @@ main {
 }
 
 /* --- Game Page --- */
+.btn-back {
+  display: none;
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .page-game-active .btn-back {
+    display: block;
+  }
+}
+
 .game-container {
   display: flex;
   justify-content: center;
@@ -436,8 +457,8 @@ footer {
    响应式布局
    ================================================================ */
 
-/* 平板 & 手机（<768px） */
-@media (max-width: 767px) {
+/* 平板 & 手机（<900px 覆盖横屏手机） */
+@media (max-width: 900px) {
   html {
     font-size: 15px;
   }

@@ -50,7 +50,7 @@ let colors = {};
  *  Canvas 响应式缩放
  * ================================================================ */
 function resizeCanvas() {
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 900;
   const isGamePage = document.getElementById('page-game')?.classList.contains('active');
 
   // 手机游戏页：全屏撑满视口
