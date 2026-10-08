@@ -416,9 +416,12 @@ function update(dt) {
   const groundY = config.canvasHeight * config.groundY;
   updateColors();
 
+  // 速度归一化：以 60fps (≈16.67ms) 为基准，dt 越大补偿越多
+  const speedNorm = dt / 16.67;
+
   // 云朵（始终移动）
   for (const cloud of clouds) {
-    cloud.x -= cloud.speed;
+    cloud.x -= cloud.speed * speedNorm;
     if (cloud.x + cloud.width < 0) {
       cloud.x = config.canvasWidth + 20;
       cloud.y = config.cloudMinY + Math.random() * (config.cloudMaxY - config.cloudMinY);
@@ -435,7 +438,7 @@ function update(dt) {
 
   // ---- PLAYING ----
   speed = Math.min(config.initialSpeed + score * config.speedIncrement, config.maxSpeed);
-  groundOffset += speed;
+  groundOffset += speed * speedNorm;
 
   // 跳跃逻辑（计时器缓动）
   if (dino.jumpPhase) {
@@ -443,7 +446,6 @@ function update(dt) {
     const elapsed = now - dino.jumpStartTime;
 
     if (dino.jumpPhase === 'rise') {
-      // 上升：easeOutQuad（先快后慢）
       const t = Math.min(elapsed / config.riseDuration, 1);
       const eased = t * (2 - t);
       dino.y = dino.jumpStartY - config.jumpHeight * eased;
@@ -452,7 +454,6 @@ function update(dt) {
         dino.jumpStartTime = now;
       }
     } else {
-      // 下落：easeInQuad（先慢后快）
       const t = Math.min(elapsed / config.fallDuration, 1);
       const eased = t * t;
       const groundY = config.canvasHeight * config.groundY;
@@ -469,7 +470,7 @@ function update(dt) {
   dino.status = dino.jumpPhase ? 'jump' : (dino.status === 'duck' ? 'duck' : 'run');
 
   // 障碍物移动
-  for (const obs of obstacles) obs.x -= speed;
+  for (const obs of obstacles) obs.x -= speed * speedNorm;
   obstacles = obstacles.filter(obs => obs.x + obs.width > -80);
 
   // 生成新障碍物
@@ -485,7 +486,7 @@ function update(dt) {
   }
 
   // 计分 + 里程碑音效
-  score += speed / config.scoreDistance;
+  score += speed * speedNorm / config.scoreDistance;
   const curMilestone = Math.floor(score / config.milestoneSoundInterval);
   if (curMilestone > milestoneLast) {
     milestoneLast = curMilestone;

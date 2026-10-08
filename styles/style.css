@@ -230,6 +230,23 @@ main {
   justify-content: center;
   align-items: center;
   min-height: 420px;
+  padding: 0;
+}
+
+/* 手机竖屏：建议横屏提示 */
+.game-rotate-hint {
+  display: none;
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 500px) {
+  .game-container {
+    min-height: 0;
+    padding: 0.5rem 0;
+  }
 }
 
 #game-canvas {
