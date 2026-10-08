@@ -37,9 +37,9 @@ const GAME_CONFIG = {
   pterodactylLowY: 0.65,
 
   // 速度
-  initialSpeed: 0.9,
-  maxSpeed: 6,
-  speedIncrement: 0.0002,
+  initialSpeed: 2.0,
+  maxSpeed: 10,
+  speedIncrement: 0.0005,
 
   // 云朵
   cloudW: 50,                // sprite 显示宽（源 100）

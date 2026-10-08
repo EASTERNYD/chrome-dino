@@ -1,7 +1,7 @@
 {
-  "initialSpeed": 1.2,
-  "maxSpeed": 8,
-  "speedIncrement": 0.0003,
+  "initialSpeed": 2.0,
+  "maxSpeed": 10,
+  "speedIncrement": 0.0005,
   "obstacleMinInterval": 800,
   "obstacleMaxInterval": 2400,
   "gravity": 0.4,
