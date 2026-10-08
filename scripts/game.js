@@ -34,6 +34,7 @@ let lastAnimFlip = 0;          // 上次切换帧的时间戳
 // 游戏数据
 let score = 0;
 let speed = 0;
+let dt = 0;
 let groundOffset = 0;
 let lastObstacleTime = 0;
 let milestoneLast = 0;
@@ -397,7 +398,7 @@ function updateColors() {
  * ================================================================ */
 function gameLoop(timestamp) {
   if (!lastTimestamp) lastTimestamp = timestamp;
-  let dt = timestamp - lastTimestamp;
+  dt = timestamp - lastTimestamp;
   lastTimestamp = timestamp;
   if (dt > 100) dt = 16;
 
@@ -519,6 +520,14 @@ function render() {
   }
   drawDino();
   drawScore();
+
+  // 调试：FPS + 实时速度（左上角）
+  ctx.save();
+  ctx.fillStyle = '#888';
+  ctx.font = '12px monospace';
+  const fps = Math.round(1000 / ((performance.now() - lastTimestamp) || 1));
+  ctx.fillText(`fps:${fps}  speed:${speed.toFixed(1)}  dt:${dt.toFixed(1)}`, 8, 18);
+  ctx.restore();
 
   if (state === GameState.IDLE) drawIdleHint();
   else if (state === GameState.GAME_OVER) drawGameOverOverlay();
