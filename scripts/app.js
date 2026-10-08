@@ -5,6 +5,13 @@
 /* ================================================================
  *  页面路由（SPA 三视图切换）
  * ================================================================ */
+/* 竖屏时自动退出游戏 */
+function onOrientationChange() {
+  if (screen.orientation?.type?.startsWith('portrait')) {
+    showPage('home');
+  }
+}
+
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById(`page-${pageId}`);
@@ -19,10 +26,13 @@ function showPage(pageId) {
   if (pageId === 'game') {
     document.body.classList.add('page-game-active');
     screen.orientation?.lock?.('landscape').catch(() => {});
+    // 转回竖屏自动退出游戏
+    screen.orientation?.addEventListener?.('change', onOrientationChange);
     if (typeof startGame === 'function') startGame();
   } else {
     document.body.classList.remove('page-game-active');
     screen.orientation?.unlock?.();
+    screen.orientation?.removeEventListener?.('change', onOrientationChange);
     if (typeof stopGame === 'function') stopGame();
   }
 
