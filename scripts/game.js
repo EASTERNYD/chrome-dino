@@ -52,10 +52,13 @@ let colors = {};
 function resizeCanvas() {
   const isMobile = window.innerWidth < 900;
   const isGamePage = document.getElementById('page-game')?.classList.contains('active');
+  const isLandscape = window.innerWidth > window.innerHeight;
 
-  // 手机游戏页：全屏撑满视口
-  const maxWidth  = (isMobile && isGamePage) ? window.innerWidth  : Math.min(window.innerWidth - 32, 800);
-  const maxHeight = (isMobile && isGamePage) ? window.innerHeight : Math.min(window.innerHeight - 160, 400);
+  // 手机 + 横屏 + 游戏页 → 全屏撑满视口
+  const fullscreen = isMobile && isGamePage && isLandscape;
+
+  const maxWidth  = fullscreen ? window.innerWidth  : Math.min(window.innerWidth - 32, 800);
+  const maxHeight = fullscreen ? window.innerHeight : Math.min(window.innerHeight - 160, 400);
 
   const scale = Math.min(maxWidth / config.canvasWidth, maxHeight / config.canvasHeight);
   canvas.style.width  = `${config.canvasWidth * scale}px`;

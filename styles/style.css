@@ -225,23 +225,18 @@ main {
 }
 
 /* --- Game Page --- */
-.btn-back {
+.rotate-hint {
   display: none;
-  position: fixed;
-  top: 8px;
-  left: 8px;
-  z-index: 200;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  cursor: pointer;
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .page-game-active .btn-back {
+/* 竖屏 + 游戏页：显示旋转提示 */
+@media (orientation: portrait) {
+  .page-game-active .rotate-hint {
     display: block;
   }
 }
@@ -252,15 +247,6 @@ main {
   align-items: center;
   min-height: 420px;
   padding: 0;
-}
-
-/* 手机竖屏：建议横屏提示 */
-.game-rotate-hint {
-  display: none;
-  text-align: center;
-  color: var(--color-text-secondary);
-  padding: 1rem;
-  font-size: 0.9rem;
 }
 
 @media (max-width: 500px) {
@@ -463,23 +449,25 @@ footer {
     font-size: 15px;
   }
 
-  /* 游戏页全屏模式 */
-  .page-game-active header,
-  .page-game-active footer {
-    display: none;
-  }
-  .page-game-active main {
-    padding: 0;
-  }
-  .page-game-active .game-container {
-    min-height: 100vh;
-    min-height: 100dvh;
-    align-items: center;
-  }
-  .page-game-active #game-canvas {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
+  /* 游戏页全屏模式（仅横屏） */
+  @media (orientation: landscape) {
+    .page-game-active header,
+    .page-game-active footer {
+      display: none;
+    }
+    .page-game-active main {
+      padding: 0;
+    }
+    .page-game-active .game-container {
+      min-height: 100vh;
+      min-height: 100dvh;
+      align-items: center;
+    }
+    .page-game-active #game-canvas {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
   }
 
   nav {
