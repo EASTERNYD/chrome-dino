@@ -17,8 +17,10 @@ function showPage(pageId) {
 
   // 页面切换时的游戏生命周期管理
   if (pageId === 'game') {
+    document.body.classList.add('page-game-active');
     if (typeof startGame === 'function') startGame();
   } else {
+    document.body.classList.remove('page-game-active');
     if (typeof stopGame === 'function') stopGame();
   }
 

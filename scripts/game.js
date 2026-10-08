@@ -50,8 +50,13 @@ let colors = {};
  *  Canvas 响应式缩放
  * ================================================================ */
 function resizeCanvas() {
-  const maxWidth  = Math.min(window.innerWidth - 32, 800);
-  const maxHeight = Math.min(window.innerHeight - 160, 400);
+  const isMobile = window.innerWidth < 768;
+  const isGamePage = document.getElementById('page-game')?.classList.contains('active');
+
+  // 手机游戏页：全屏撑满视口
+  const maxWidth  = (isMobile && isGamePage) ? window.innerWidth  : Math.min(window.innerWidth - 32, 800);
+  const maxHeight = (isMobile && isGamePage) ? window.innerHeight : Math.min(window.innerHeight - 160, 400);
+
   const scale = Math.min(maxWidth / config.canvasWidth, maxHeight / config.canvasHeight);
   canvas.style.width  = `${config.canvasWidth * scale}px`;
   canvas.style.height = `${config.canvasHeight * scale}px`;

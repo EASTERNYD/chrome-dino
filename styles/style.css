@@ -442,6 +442,25 @@ footer {
     font-size: 15px;
   }
 
+  /* 游戏页全屏模式 */
+  .page-game-active header,
+  .page-game-active footer {
+    display: none;
+  }
+  .page-game-active main {
+    padding: 0;
+  }
+  .page-game-active .game-container {
+    min-height: 100vh;
+    min-height: 100dvh;
+    align-items: center;
+  }
+  .page-game-active #game-canvas {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
   nav {
     flex-wrap: wrap;
     height: auto;
