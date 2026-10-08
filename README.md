@@ -10,17 +10,17 @@
 - 计时器缓动跳跃（easeOutQuad 上升 + easeInQuad 下落）
 - AABB 碰撞检测（碰撞箱内缩，腿部不参与判定）
 - Web Audio API 程序化音效
-- 难度递增（速度 0.9→6，翼龙概率 10%→30%）
+- 难度递增（速度 4.0→16，dt 归一化补偿高刷屏，翼龙概率 10%→30%）
 - LocalStorage 排行榜 Top 10
 - 昼夜模式切换
 - SPA 单页三视图
-- 响应式布局
+- 响应式布局 + 手机横屏全屏模式（竖屏提示旋转）
 
 ## 运行
 
 **桌面端**：VS Code Live Server 或 `npx serve .`。直接双击 `index.html` 也可运行。
 
-**网页端**：[在线游玩](https://easternyd.github.io/chrome-dino/)
+**网页端**：https://easternyd.github.io/chrome-dino/
 
 ## 操作
 
