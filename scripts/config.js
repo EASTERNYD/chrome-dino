@@ -36,10 +36,10 @@ const GAME_CONFIG = {
   pterodactylHighY: 0.36,   // 对齐恐龙跳跃最高点（143px）
   pterodactylLowY: 0.65,
 
-  // 速度
-  initialSpeed: 2.0,
-  maxSpeed: 10,
-  speedIncrement: 0.0005,
+  // 速度（基准 60fps，高刷屏 dt 归一化自动补偿）
+  initialSpeed: 4.0,
+  maxSpeed: 16,
+  speedIncrement: 0.001,
 
   // 云朵
   cloudW: 50,                // sprite 显示宽（源 100）
