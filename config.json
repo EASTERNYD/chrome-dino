@@ -1,0 +1,11 @@
+{
+  "initialSpeed": 1.2,
+  "maxSpeed": 8,
+  "speedIncrement": 0.0003,
+  "obstacleMinInterval": 800,
+  "obstacleMaxInterval": 2400,
+  "gravity": 0.4,
+  "dinoJumpVelocity": -12,
+  "scoreDistance": 100,
+  "pageFlipInterval": 200
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chrome Dino — 小恐龙跑酷</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       共用顶部导航
+       ================================================================ -->
+  <header>
+    <nav>
+      <div class="nav-brand">🦖 Chrome Dino</div>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-page="home">首页</a></li>
+        <li><a href="#" class="nav-link" data-page="game">开始游戏</a></li>
+        <li><a href="#" class="nav-link" data-page="score">排行榜</a></li>
+      </ul>
+      <button id="theme-toggle" class="btn-theme" title="切换昼夜模式">🌙</button>
+    </nav>
+  </header>
+
+  <!-- ================================================================
+       主内容区（三个视图）
+       ================================================================ -->
+  <main>
+
+    <!-- ====== 视图 1：首页/关于 ====== -->
+    <section id="page-home" class="page active">
+      <article class="home-hero">
+        <h1>🦖 Chrome Dino Runner</h1>
+        <p class="home-subtitle">仿 Chrome 离线小恐龙 · 无尽跑酷游戏</p>
+
+        <div class="home-best">
+          历史最高分：<strong id="home-best-score">0</strong>
+        </div>
+
+        <button id="btn-start-game" class="btn btn-primary btn-large">🎮 开始游戏</button>
+      </article>
+
+      <article class="home-rules">
+        <h2>📋 游戏规则</h2>
+        <div class="rules-grid">
+          <div class="rule-card">
+            <span class="rule-icon">⌨️</span>
+            <h3>操作方式</h3>
+            <p>桌面端：<strong>空格键</strong> 跳跃 · <strong>↓ 键</strong> 低头<br>移动端：<strong>点击屏幕</strong> 跳跃 · <strong>下滑</strong> 低头</p>
+          </div>
+          <div class="rule-card">
+            <span class="rule-icon">🎯</span>
+            <h3>目标</h3>
+            <p>控制小恐龙奔跑，躲避仙人掌和翼龙，跑得越远得分越高！</p>
+          </div>
+          <div class="rule-card">
+            <span class="rule-icon">💀</span>
+            <h3>失败条件</h3>
+            <p>碰到仙人掌或翼龙 → 游戏结束，成绩自动保存到排行榜</p>
+          </div>
+          <div class="rule-card">
+            <span class="rule-icon">⚡</span>
+            <h3>难度递增</h3>
+            <p>分数越高，速度越快！每 100 分速度提升一档</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ====== 视图 2：游戏主页面 ====== -->
+    <section id="page-game" class="page">
+      <div class="game-container">
+        <canvas id="game-canvas" width="800" height="400"></canvas>
+      </div>
+    </section>
+
+    <!-- ====== 视图 3：排行榜/成绩 ====== -->
+    <section id="page-score" class="page">
+      <article class="score-section">
+        <h2>🏆 排行榜</h2>
+        <p class="score-subtitle">历史最高分记录（最多保留 10 条）</p>
+
+        <div class="table-wrapper">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>排名</th>
+                <th>分数</th>
+                <th>日期</th>
+              </tr>
+            </thead>
+            <tbody id="score-tbody"></tbody>
+          </table>
+          <p id="score-empty" class="score-empty">暂无成绩记录，快去玩一局吧！🎮</p>
+        </div>
+
+        <button id="btn-clear-scores" class="btn btn-outline btn-sm">清空记录</button>
+      </article>
+
+      <article class="feedback-section">
+        <h2>💬 留言反馈</h2>
+        <form id="feedback-form" class="feedback-form" novalidate>
+          <div class="form-group">
+            <label for="feedback-name">姓名 <span class="required">*</span></label>
+            <input type="text" id="feedback-name" placeholder="请输入您的姓名" autocomplete="name">
+            <span id="name-error" class="form-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="feedback-email">邮箱 <span class="required">*</span></label>
+            <input type="email" id="feedback-email" placeholder="example@mail.com" autocomplete="email">
+            <span id="email-error" class="form-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="feedback-message">留言 <span class="required">*</span></label>
+            <textarea id="feedback-message" rows="4" placeholder="请输入您的留言（至少 5 个字符）"></textarea>
+            <span id="message-error" class="form-error"></span>
+          </div>
+          <button type="submit" class="btn btn-primary">提交留言</button>
+          <p id="feedback-success" class="form-success">✅ 留言提交成功！感谢您的反馈。</p>
+        </form>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       共用底部栏
+       ================================================================ -->
+  <footer>
+    <p>&copy; 2026 Chrome Dino Runner · 仿 Chrome 离线小恐龙游戏</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="scripts/config.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/game.js"></script>
+</body>
+</html>
